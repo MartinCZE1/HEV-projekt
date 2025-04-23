@@ -724,6 +724,7 @@ shape = SubResource("RectangleShape2D_8ni4r")
 [node name="Background Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_q2lw0")
 volume_db = -10.0
+autoplay = true
 
 [node name="endOfWorld3" type="Area2D" parent="."]
 position = Vector2(-19229, -1067)
