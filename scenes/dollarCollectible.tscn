@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://4fmssuynv777"]
+
+[ext_resource type="Texture2D" uid="uid://wgklio8wpm6v" path="res://textures/single_dollar.png" id="1_np5eo"]
+[ext_resource type="Script" path="res://scripts/dollar_collectible.gd" id="1_s7a4k"]
+
+[sub_resource type="Animation" id="Animation_m426a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vfl37"]
+resource_name = "idle"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.13333, 4.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 10), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aca8f"]
+_data = {
+"RESET": SubResource("Animation_m426a"),
+"idle": SubResource("Animation_vfl37")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lwr4o"]
+size = Vector2(230, 100)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_s7a4k")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_np5eo")
+offset = Vector2(10, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_aca8f")
+}
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0)
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_lwr4o")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

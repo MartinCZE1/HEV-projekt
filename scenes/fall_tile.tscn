@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bb57t3qhikjar"]
+
+[ext_resource type="Script" path="res://scripts/fall_tile.gd" id="1_vyq1r"]
+[ext_resource type="Texture2D" uid="uid://dvo50i77jra0l" path="res://textures/tiles.png" id="2_a44o4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xlv1j"]
+size = Vector2(18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fglud"]
+atlas = ExtResource("2_a44o4")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ju2vy"]
+size = Vector2(16, 16)
+
+[node name="fall_tile" type="Area2D"]
+script = ExtResource("1_vyq1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xlv1j")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D"]
+texture = SubResource("AtlasTexture_fglud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("RectangleShape2D_ju2vy")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

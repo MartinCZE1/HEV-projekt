@@ -1,0 +1,72 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhsjidrtex3pv"]
+
+[ext_resource type="Script" path="res://Score.gd" id="1_1yu84"]
+[ext_resource type="Texture2D" uid="uid://cfme8lfckl2go" path="res://textures/Sprite-0001.png" id="2_f0ocl"]
+
+[node name="Control" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 144.0
+offset_bottom = 85.0
+script = ExtResource("1_1yu84")
+
+[node name="PortalUnlockLabel" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = 703.0
+offset_top = 10.0
+offset_right = 1062.0
+offset_bottom = 33.0
+text = "You need to kill 5 enemies to unlock the portal"
+horizontal_alignment = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="Score"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 96.0
+offset_bottom = 42.0
+
+[node name="hearts" type="TextureRect" parent="Score/HFlowContainer"]
+layout_mode = 2
+texture = ExtResource("2_f0ocl")
+
+[node name="hearts2" type="TextureRect" parent="Score/HFlowContainer"]
+layout_mode = 2
+texture = ExtResource("2_f0ocl")
+
+[node name="hearts3" type="TextureRect" parent="Score/HFlowContainer"]
+layout_mode = 2
+texture = ExtResource("2_f0ocl")
+
+[node name="Label" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 44.0
+offset_right = 57.0
+offset_bottom = 67.0
+text = "Score: 0"
+
+[node name="HealthLabel" type="Label" parent="Score"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 70.0
+offset_right = 84.0
+offset_bottom = 93.0
+text = "Health: 100"
+
+[node name="TextovePole" type="Label" parent="."]
+layout_mode = 0
+offset_top = 500.0
+offset_right = 1152.0
+offset_bottom = 523.0
+horizontal_alignment = 1

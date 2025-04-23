@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtlihgx522on3"]
+
+[ext_resource type="Script" path="res://scripts/mission_failed.gd" id="1_ih6tx"]
+[ext_resource type="Texture2D" uid="uid://flk2a1mm6id2" path="res://textures/firstSceneBG.png" id="2_faegy"]
+
+[sub_resource type="Theme" id="Theme_q5m0o"]
+default_font_size = 50
+
+[node name="MissionFailed" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ih6tx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(576, 384)
+scale = Vector2(3.6, 2.4)
+texture = ExtResource("2_faegy")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -114.5
+offset_top = 155.0
+offset_right = 114.5
+offset_bottom = 224.0
+grow_horizontal = 2
+theme = SubResource("Theme_q5m0o")
+text = "You Died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Retry" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_top = -59.0
+offset_right = 125.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"
+
+[node name="Ragequit" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -125.0
+offset_right = 125.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Give up"
+
+[connection signal="pressed" from="Retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="Ragequit" to="." method="_on_ragequit_pressed"]

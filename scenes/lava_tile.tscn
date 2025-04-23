@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpr25hftcwyvh"]
+
+[ext_resource type="Script" path="res://scripts/lava_tile.gd" id="1_kj6bv"]
+[ext_resource type="Texture2D" uid="uid://dvo50i77jra0l" path="res://textures/tiles.png" id="1_mts72"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x8m0y"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ngef"]
+atlas = ExtResource("1_mts72")
+region = Rect2(0, 32, 16, 16)
+
+[node name="lava_tile" type="Area2D"]
+script = ExtResource("1_kj6bv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x8m0y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_4ngef")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

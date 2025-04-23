@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1cpjstusj7mo"]
+
+[ext_resource type="Script" path="res://scripts/jump_tile.gd" id="1_877de"]
+[ext_resource type="Texture2D" uid="uid://dvo50i77jra0l" path="res://textures/tiles.png" id="1_t6ckh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_88t2s"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u0oui"]
+atlas = ExtResource("1_t6ckh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cdcor"]
+size = Vector2(16, 17)
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_877de")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_88t2s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_u0oui")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_cdcor")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
